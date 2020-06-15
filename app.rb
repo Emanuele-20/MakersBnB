@@ -15,7 +15,8 @@ end
 
 post '/add-list/add' do
   #add params for table here
-  redirect '/' 
+  Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
+  redirect '/'
 end
 
 
