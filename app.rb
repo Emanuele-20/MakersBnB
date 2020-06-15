@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/add-listing' do
-  
+  erb :add_listing
 end
 
 
@@ -17,7 +17,7 @@ end
 # end
 
 # get '/sign-in' do
-  
+
 # end
 
 
