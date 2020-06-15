@@ -3,12 +3,19 @@ require './lib/listing.rb'
 
 class Makersbnb < Sinatra::Base
 
+  enable :sessions
+
 get '/' do
  erb :homepage
 end
 
 get '/add-listing' do
   erb :add_listing
+end
+
+post '/add-list/add' do
+  #add params for table here
+  redirect '/' 
 end
 
 

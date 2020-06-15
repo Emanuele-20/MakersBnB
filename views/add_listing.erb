@@ -4,12 +4,16 @@
   </head>
   <h1>Add new listing</h1>
 
-  <form action="/">
-  <input type= 'submit' value='Add listing' />
-
-
+  <form action="/add-listing/add" method='post'>
+  <label for='listing-name'> Listing Name </label><br>
+    <input type='text' id='listing-name' name='name'/> <br>
+  <label for='description'> Add a short description </label> <br>
+    <input type='text' id='description' name='description'/> <br>
+  <label for='price'> Price Per Night </label> <br>
+    <input type='text' id='price' name='price'/> <br>
+  <label for='postcode'> Postcode </label> <br>
+    <input type='text' id='postcode' name='postcode'/> <br>
+  <input type='submit' value='Submit'/>
   </form>
-
-
 
 </html>
