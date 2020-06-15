@@ -5,7 +5,7 @@ describe Listing do
   describe '.add' do
   
     it 'should add a new listing' do
-      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, location: 'N1 4RL')
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
 
       expect(listing).to be_a Listing
       expect(listing.title).to eq 'Test listing'
