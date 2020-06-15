@@ -1,6 +1,3 @@
 class Listing
-
-
-
-
+ "test"
 end
