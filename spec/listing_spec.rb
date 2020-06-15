@@ -4,7 +4,7 @@ describe Listing do
   
   describe '.add' do
   
-    xit 'should add a new listing' do
+    it 'should add a new listing' do
       listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
 
       expect(listing).to be_a Listing
