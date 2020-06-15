@@ -18,4 +18,13 @@ class Listing
      RETURNING title, description, price, postcode;")
      Listing.new(title: result[0]['title'], description: result[0]['description'], price: (result[0]['price']).to_i, postcode: result[0]['postcode'])
    end
+
+   def self.view_all
+      con = PG.connect(dbname: 'makersbnb')
+      result = con.exec("SELECT * FROM listing;")
+      result.map do |entry|
+        Listing.new(title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
+      end
+   end
+
 end
