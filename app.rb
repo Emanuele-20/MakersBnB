@@ -1,12 +1,22 @@
 require 'sinatra/base'
 require './lib/listing.rb'
+require './lib/user.rb'
 
 class Makersbnb < Sinatra::Base
 
   enable :sessions
 
-get '/' do
+get '/home' do
  erb :homepage
+end
+
+get '/' do
+  erb :sign_up
+end
+
+post'/sign-up' do
+  User.create(username: params['username'], email: params['email'], password: params['password'])
+  redirect '/home'
 end
 
 get '/add-listing' do
@@ -14,25 +24,14 @@ get '/add-listing' do
 end
 
 post '/add-listing/add' do
-  #add params for table here
   Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
   redirect '/add-listing/added'
 end
 
 get '/add-listing/added' do
   @listing = Listing.view_all
-  p @listing
-    erb :added
+  erb :added
 end
-
-
-# get '/login' do
-
-# end
-
-# get '/sign-in' do
-
-# end
 
 
 run! if app_file == $0
