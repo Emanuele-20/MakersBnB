@@ -32,7 +32,7 @@ class Listing
    private
 
    def self.database_connection
-    if ENV['ENVIRONMENT'] = 'test'
+    if ENV['ENVIRONMENT'] == 'test'
       @con = PG.connect(dbname: 'makersbnb_test')
     else
      @con = PG.connect(dbname: 'makersbnb')
