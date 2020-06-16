@@ -24,7 +24,7 @@ class Listing
    end
 
    def self.view_all
-    if ENV['ENVIRONMENT'] = 'test'
+    if ENV['ENVIRONMENT'] == 'test'
       con = PG.connect(dbname: 'makersbnb_test')
     else
      con = PG.connect(dbname: 'makersbnb')
