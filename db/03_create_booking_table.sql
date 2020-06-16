@@ -1,8 +1,7 @@
 CREATE TABLE booking (
-bookingid INT NOT NULL,
+bookingid SERIAL PRIMARY KEY,
 date DATE,
 listingid INT,
-PRIMARY KEY (bookingid),
 CONSTRAINT FK_listingid FOREIGN KEY (listingid)
 REFERENCES listing(listingid)
 );
