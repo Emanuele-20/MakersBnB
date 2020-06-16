@@ -20,11 +20,11 @@ describe User do
   end
 
   describe ".user_exists?" do
-    it 'should check if a username is unique' do
-      user = User.create(username: 'Al', email: 'al@al.com', password: 'alvin')
+    it 'should check if a username is exists or not' do
+      User.create(username: 'Al', email: 'al@al.com', password: 'alvin')
 
-      expect(user.user_exists?).to be true
-      expect(user.user_exists?('testperson')).to be false
+      expect(User.user_exists?'Al').to be true
+      expect(User.user_exists?('testperson')).to be false
     end
   end
 end
