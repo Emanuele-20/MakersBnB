@@ -19,6 +19,10 @@ post'/sign-up' do
   redirect '/home'
 end
 
+get '/sign-in' do
+  erb :sign_in
+end
+
 get '/add-listing' do
   erb :add_listing
 end
