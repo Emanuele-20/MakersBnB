@@ -6,3 +6,4 @@ gem "shotgun"
 gem 'capybara'
 gem "rspec"
 gem "pg"
+gem "timecop"
