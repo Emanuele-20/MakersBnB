@@ -16,8 +16,8 @@ class User
     result = @con.exec(
     "INSERT INTO users (username, email, password)
     VALUES ('#{username}', '#{email}', '#{password}')
-    RETURNING id, username, email;")
-    User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'], password: result[0]['password'])
+    RETURNING userid, username, email;")
+    User.new(id: result[0]['userid'], username: result[0]['username'], email: result[0]['email'], password: result[0]['password'])
   end
 
   def self.user_exists?(username)
@@ -33,7 +33,7 @@ class User
 
     database_connection
     users = @con.exec(("SELECT * FROM users WHERE username='#{username}'"))
-    result = users.map { |user| User.new(id: user['id'], username: user['username'], email: user['email'], password: user['password']) }
+    result = users.map { |user| User.new(id: user['userid'], username: user['username'], email: user['email'], password: user['password']) }
     @current_user = result[0]
   end
 
