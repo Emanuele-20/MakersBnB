@@ -11,13 +11,9 @@ class User
   end
 
   def self.create(username:, email:, password:)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname:'makersbnb_test')
-    else
-      con = PG.connect(dbname:'makersbnb')
-    end
+    database_connection
 
-    result = con.exec(
+    result = @con.exec(
     "INSERT INTO users (username, email, password)
     VALUES ('#{username}', '#{email}', '#{password}')
     RETURNING id, username, email;")
@@ -25,13 +21,9 @@ class User
   end
 
   def self.user_exists?(username)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname:'makersbnb_test')
-    else
-      con = PG.connect(dbname:'makersbnb')
-    end
+    database_connection
 
-    users = con.exec('SELECT username FROM users')
+    users = @con.exec('SELECT username FROM users')
     list_of_usernames = users.map { |un| un['username'] }
     list_of_usernames.include?(username)
   end
@@ -40,6 +32,14 @@ class User
     return false if user_exists?(username) == false
   end
 
+  private
 
+  def self.database_connection
+    if ENV['ENVIRONMENT'] == 'test'
+      @con = PG.connect(dbname:'makersbnb_test')
+    else
+      @con = PG.connect(dbname:'makersbnb')
+    end
+  end
 
  end
