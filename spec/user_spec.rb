@@ -18,4 +18,13 @@ describe User do
       expect(user.email).to eq "al@al.com"
     end
   end
+
+  describe ".user_exists?" do
+    it 'should check if a username is unique' do
+      user = User.create(username: 'Al', email: 'al@al.com', password: 'alvin')
+
+      expect(user.user_exists?).to be true
+      expect(user.user_exists?('testperson')).to be false
+    end
+  end
 end

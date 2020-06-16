@@ -24,4 +24,16 @@ class User
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'], password: result[0]['password'])
   end
 
+  def self.user_exists?(username)
+    if ENV['ENVIRONMENT'] == 'test'
+      con = PG.connect(dbname:'makersbnb_test')
+    else
+      con = PG.connect(dbname:'makersbnb')
+    end
+
+    users = con.exec('SELECT username FROM users')
+    list_of_usernames = users.map { |un| un['username'] }
+    list_of_usernames.include?(username)
+  end
+
  end
