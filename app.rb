@@ -1,13 +1,14 @@
 require 'sinatra/base'
 require './lib/listing.rb'
 require './lib/user.rb'
+require 'json'
 
 class Makersbnb < Sinatra::Base
 
   enable :sessions
 
 get '/home' do
- erb :homepage
+  File.read('public/index.html')
 end
 
 get '/' do
@@ -24,7 +25,7 @@ get '/sign-in' do
 end
 
 get '/add-listing' do
-  erb :add_listing
+  File.read('public/add_listing.html')
 end
 
 post '/add-listing/add' do
@@ -33,9 +34,9 @@ post '/add-listing/add' do
 end
 
 get '/add-listing/added' do
-  @listing = Listing.view_all
-  p @listing
-  erb :added
+  listing = Listing.view_all
+  p listing
+  File.read('public/added.html')
 end
 
 
