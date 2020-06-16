@@ -13,10 +13,16 @@ get '/add-listing' do
   erb :add_listing
 end
 
-post '/add-list/add' do
+post '/add-listing/add' do
   #add params for table here
   Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
-  redirect '/'
+  redirect '/add-listing/added'
+end
+
+get '/add-listing/added' do
+  @listing = Listing.view_all
+  p @listing
+    erb :added
 end
 
 

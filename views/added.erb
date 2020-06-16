@@ -1,0 +1,21 @@
+<h1>You've just added a new space: </h1>
+
+ <h2><% @listing.each do |entry| %>
+      <%= entry.title %>
+      <%= entry.description %>
+  <% end %> </h2>
+<br></br>
+
+<form action='/view-listing'>
+<input type= 'submit' value='View the listing' >
+</form>
+
+<form action="/" method='get'>
+<input type= 'submit' value='Return to homepage' >
+</form>
+
+<form action = "/view-all-listings" method='get'>
+<input type= 'submit' value='View All Listings' >
+</form>
+
+</html>
