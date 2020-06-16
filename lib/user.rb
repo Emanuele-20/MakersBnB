@@ -30,6 +30,19 @@ class User
 
   def self.find_user(username)
     return false if user_exists?(username) == false
+
+    database_connection
+    users = @con.exec(("SELECT * FROM users WHERE username='#{username}'"))
+    result = users.map { |user| User.new(id: user['id'], username: user['username'], email: user['email'], password: user['password']) }
+    @current_user = result[0]
+  end
+
+  def self.current_user
+    @current_user
+  end
+
+  def self.correct_login?(username, password)
+    username == @current_user.username && password == @current_user.password
   end
 
   private

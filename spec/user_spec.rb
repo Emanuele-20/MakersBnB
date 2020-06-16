@@ -36,6 +36,16 @@ describe User do
     end
   end
 
+  describe '.correct_login?' do
+    it 'checks that the username and password typed in are correct' do
+      User.create(username: 'Al', email: 'al@al.com', password: 'alvin')
+      User.find_user('Al')
+
+      expect(User.correct_login?('Al', 'alvin')).to be true
+      expect(User.correct_login?('Ema', 'mannybobs')).to be false
+    end
+  end
+
 
 
 end
