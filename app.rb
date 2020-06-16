@@ -30,6 +30,7 @@ end
 
 get '/add-listing/added' do
   @listing = Listing.view_all
+  p @listing
   erb :added
 end
 
