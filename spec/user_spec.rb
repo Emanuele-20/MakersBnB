@@ -2,7 +2,7 @@ require 'user'
 
 describe User do
   subject(:test_user) { described_class.new(id: 1, username: 'Al', email: 'al@al.com', password: 'alvin') }
-  
+
   it 'should store a username, email and password' do
     expect(test_user.username).to eq 'Al'
     expect(test_user.email).to eq 'al@al.com'
@@ -27,4 +27,15 @@ describe User do
       expect(User.user_exists?('testperson')).to be false
     end
   end
+
+  describe "find_user" do
+    it 'should return "false" if the user does not exist ' do
+      User.create(username: 'Al', email: 'al@al.com', password: 'alvin')
+
+      expect(User.find_user('Ema')).to be false
+    end
+  end
+
+
+
 end

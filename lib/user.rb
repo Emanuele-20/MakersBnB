@@ -36,4 +36,10 @@ class User
     list_of_usernames.include?(username)
   end
 
+  def self.find_user(username)
+    return false if user_exists?(username) == false
+  end
+
+
+
  end
