@@ -24,14 +24,4 @@ class User
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'], password: result[0]['password'])
   end
 
-#   private
-#
-#   def database_connection
-#     if ENV['ENVIRONMENT'] == 'test'
-#       con = PG.connect(dbname:'makersbnb_test')
-#     else
-#       con = PG.connect(dbname:'makersbnb')
-#     end
-#   end
-#
  end
