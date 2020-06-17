@@ -1,11 +1,12 @@
 require 'pg'
+require 'date'
 
 class Booking
   attr_reader :id, :date, :listingid
 
   def initialize(id:, date:, listingid:)
     @id = id
-    @date = date
+    @date = format_date(date)
     @listingid = listingid
   end
 
@@ -26,6 +27,10 @@ class Booking
     else
      @con = PG.connect(dbname: 'makersbnb')
     end
+  end
+
+  def format_date(date)
+    DateTime.parse(date).strftime('%d %B %Y')
   end
 
 end
