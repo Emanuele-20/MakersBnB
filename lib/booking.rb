@@ -30,7 +30,7 @@ class Booking
   end
 
   def format_date(date)
-    DateTime.parse(date).strftime('%d %B %Y')
+    DateTime.parse(date).strftime('%d/%m/%Y')
   end
 
 end
