@@ -7,13 +7,13 @@ class Booking
 
   def initialize(id:, date:, listingid:)
     @id = id
-    @date = format_date(date)
+    @date = date
     @listingid = listingid
   end
 
   def self.add(date:, listingid:)
     database_connection
-    
+
     result = @con.exec("INSERT INTO booking (date, listingid)
     VALUES ('#{date}', '#{listingid}')
     RETURNING bookingid, date, listingid;")
@@ -29,8 +29,5 @@ class Booking
      @con = PG.connect(dbname: 'makersbnb')
     end
   end
-  
-  def format_date(date)
-    DateTime.parse(date).strftime('%d/%m/%Y')
-  end
+
 end
