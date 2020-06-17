@@ -15,8 +15,10 @@
   </head>
   <body>
     <h1> Current Listings</h1>
-    <p>When would you like to stay? <input type="text" id="datepicker"></p>
+    <form action="/check-availability" method="post">
+    <p>When would you like to stay? <input type="text" id="datepicker" name="date"></p>
     <input type="submit" value="Check Availability">
+    </form>
     <ul><% @all_listing.each do |listing|  %>
       <li>
         <%= listing.title %><br>

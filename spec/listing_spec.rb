@@ -38,7 +38,7 @@ describe Listing do
     Timecop.freeze(Time.parse('16 June 2020'))
     listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
     booking = Booking.add(date: '16 June 2020', listingid: listing.id)
-    available = Listing.available_listings
+    available = Listing.available_listings('16 June 2020')
 
     expect(available).not_to include(listing.id)
 

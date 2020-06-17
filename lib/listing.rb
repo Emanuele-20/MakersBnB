@@ -26,14 +26,21 @@ class Listing
 
       result = @con.exec("SELECT * FROM listing;")
       result.map do |entry|
-        Listing.new(id: result[0]['listingid'], title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
+        Listing.new(id: entry['listingid'], title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
       end
    end
 
-   def self.available_listing
+   def self.available_listings(date)
         database_connection
 
-        result = @con.exect("SELECT * FROM booking;")
+        result = @con.exec(
+          "SELECT listingid FROM listing 
+          WHERE NOT listingid = 
+          (SELECT listingid FROM booking WHERE date = '#{date}');")
+          result.map do |row|
+            Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
+          end
+   end 
 
 
 
