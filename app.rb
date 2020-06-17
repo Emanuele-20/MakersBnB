@@ -36,6 +36,7 @@ end
 
 get '/view-listings' do
   @all_listing = Listing.view_all
+  @available_list = Listing.available_listing(date)
   erb :view_listings
 end
 
