@@ -39,11 +39,18 @@ get '/view-listings' do
   erb :view_listings
 end
 
-post '/check-availability' do
-  @available_list = Listing.available_listings(date: params['date'])
-  redirect '/check-availability'
+get '/check-availability' do
+  @available_list = Listing.available_properties
+  p @available_list
+  erb :check_availability
 end
 
+post '/check-availability' do
+  date = DateTime.parse(params['date']).strftime('%Y-%m-%d')
+  @list = Listing.check_available_listings(date: date)
+  p @list
+  redirect '/check-availability'
+end
 
 run! if app_file == $0
 

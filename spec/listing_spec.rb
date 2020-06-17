@@ -35,12 +35,14 @@ describe Listing do
   describe '.available_listings' do
     it 'should only return available listings' do
       
-    Timecop.freeze(Time.parse('16 June 2020'))
-    listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
-    booking = Booking.add(date: '16 June 2020', listingid: listing.id)
-    available = Listing.available_listings('16 June 2020')
+      Timecop.freeze(Time.parse('16 June 2020'))
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
+      second_listing = Listing.add(title: 'Test2 listing', description: 'Great place', price: 120, postcode: 'N4 4RL')
 
-    expect(available).not_to include(listing.id)
+      booking = Booking.add(date: '16 June 2020', listingid: listing.id)
+      available = Listing.check_available_listings(date: '16 June 2020')
+
+      expect(available.first.id).to eq second_listing.id
 
     end
 

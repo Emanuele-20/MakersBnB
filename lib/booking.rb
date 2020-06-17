@@ -13,6 +13,7 @@ class Booking
 
   def self.add(date:, listingid:)
     database_connection
+    
     result = @con.exec("INSERT INTO booking (date, listingid)
     VALUES ('#{date}', '#{listingid}')
     RETURNING bookingid, date, listingid;")

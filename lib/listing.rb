@@ -30,17 +30,21 @@ class Listing
       end
    end
 
-   def self.available_listings(date)
-        database_connection
+   def self.check_available_listings(date:)
+      database_connection
 
-        result = @con.exec(
-          "SELECT listingid FROM listing 
-          WHERE NOT listingid = 
-          (SELECT listingid FROM booking WHERE date = '#{date}');")
-          result.map do |row|
-            Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
-          end
+      result = @con.exec(
+      "SELECT * FROM listing 
+      WHERE NOT listingid IN
+      (SELECT listingid FROM booking WHERE date = '#{date}');")
+        @available_properties = result.map do |row|
+          Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
+        end
    end 
+
+   def self.available_properties
+    @available_properties
+   end
 
 
 
