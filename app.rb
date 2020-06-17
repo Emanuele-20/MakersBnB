@@ -34,6 +34,10 @@ get '/add-listing/added' do
   erb :added
 end
 
+get '/view-listings' do
+  @all_listing = Listing.view_all
+  erb :view_listings
+end
 
 run! if app_file == $0
 
