@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Listings</title>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    </script>
+  </head>
+  <body>
+    <h1> Current Listings</h1>
+    <p>When would you like to stay? <input type="text" id="datepicker"></p>
+    <input type="submit" value="Check Availability">
+    <ul><% @all_listing.each do |listing|  %>
+      <li>
+        <%= listing.title %><br>
+        <%= listing.description %><br>
+        <%= listing.postcode.upcase %><br>
+        £<%= listing.price %>.00<br>
+        <form action="/booking/:<% listing.id %>" method="post">
+        <input type="button" name="book" value="Book This Property">
+        </form>
+        <% end %>
+      </li>
+    </ul>
+
+
+
+
+
+
+  </body>
+
+
+
+
+
+
+</html>

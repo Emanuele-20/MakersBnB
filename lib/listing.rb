@@ -30,6 +30,13 @@ class Listing
       end
    end
 
+   def self.available_listing
+        database_connection
+
+        result = @con.exect("SELECT * FROM booking;")
+
+
+
    private
 
    def self.database_connection

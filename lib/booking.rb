@@ -2,6 +2,7 @@ require 'pg'
 require 'date'
 
 class Booking
+
   attr_reader :id, :date, :listingid
 
   def initialize(id:, date:, listingid:)
@@ -12,8 +13,7 @@ class Booking
 
   def self.add(date:, listingid:)
     database_connection
-
-    result = @con.exec("INSERT INTO booking (date, listingid) 
+    result = @con.exec("INSERT INTO booking (date, listingid)
     VALUES ('#{date}', '#{listingid}')
     RETURNING bookingid, date, listingid;")
     Booking.new(id: result[0]['bookingid'], date: result[0]['date'], listingid: (result[0]['listingid']).to_i)
@@ -28,9 +28,8 @@ class Booking
      @con = PG.connect(dbname: 'makersbnb')
     end
   end
-
+  
   def format_date(date)
     DateTime.parse(date).strftime('%d/%m/%Y')
   end
-
 end
