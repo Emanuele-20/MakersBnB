@@ -1,6 +1,14 @@
+    <div class="header">
+      <h1>Makers BnB</h1>
+      <p>Properties available on the date you selected <p>
+    </div>
+
 </form>
-    <ul><% @available_list.each do |listing|  %>
+    <% @available_list.each do |listing|  %>
       <li>
+      <div class="row">
+      <div class="column">
+        <div class="card">
         <%= listing.title %><br>
         <%= listing.description %><br>
         <%= listing.postcode.upcase %><br>
@@ -8,6 +16,8 @@
         <form action="/booking/:<% listing.id %>" method="post">
         <input type="button" name="book" value="Book This Property">
         </form>
+        </div>
+      </div>
+    </div>
         <% end %>
       </li>
-    </ul>
