@@ -9,37 +9,24 @@
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script>
     $( function() {
-      $( "#datepicker" ).datepicker();
+      $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
     } );
     </script>
   </head>
-  <body>
-    <h1> Current Listings</h1>
-    <p>When would you like to stay? <input type="text" id="datepicker"></p>
-    <input type="submit" value="Check Availability">
-    <ul><% @all_listing.each do |listing|  %>
-      <li>
-        <%= listing.title %><br>
-        <%= listing.description %><br>
-        <%= listing.postcode.upcase %><br>
-        £<%= listing.price %>.00<br>
-        <form action="/booking/:<% listing.id %>" method="post">
-        <input type="button" name="book" value="Book This Property">
-        </form>
-        <% end %>
-      </li>
-    </ul>
-
-
-
-
-
-
-  </body>
-
-
-
-
-
-
+    <body>
+      <h1> Current Listings</h1>
+      <form action="/check-availability" method="post">
+      <p>When would you like to stay? <input type="text" id="datepicker" name="date"></p>
+      <input type="submit" value="Check Availability">
+      </form>
+      <ul><% @all_listing.each do |listing|  %>
+        <li>
+          <%= listing.title %><br>
+          <%= listing.description %><br>
+          <%= listing.postcode.upcase %><br>
+          £<%= listing.price %>.00<br><br>
+          <% end %>
+        </li>
+      </ul>
+    </body>
 </html>
