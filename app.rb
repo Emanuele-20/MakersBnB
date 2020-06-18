@@ -52,7 +52,7 @@ post '/check-availability' do
   redirect '/check-availability'
 end
 
-get '/my_listings' do
+get '/my-listings' do
   erb :my_listings
 end
 
