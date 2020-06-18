@@ -55,4 +55,13 @@ describe Listing do
     end
   end
 
+  describe ".edit_listing" do
+    it "should edit a listing" do
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
+      Listing.edit_listing(listingid: listing.id, title: 'Test listing Changed', description: 'Amazing place', price: 200, postcode: 'N1 4RL')
+      list = Listing.view_all
+      expect(list.last.title).to eq('Test listing Changed')
+    end
+  end
+
 end
