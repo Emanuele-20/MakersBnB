@@ -4,7 +4,4 @@ CREATE TABLE listing (
   description VARCHAR(200), 
   price INT, 
   postcode TEXT,
-  userid INT,
-  CONSTRAINT FK_userid FOREIGN KEY (userid)
-  REFERENCES users(userid)
 );

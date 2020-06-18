@@ -24,7 +24,11 @@ get '/add-listing' do
 end
 
 post '/add-listing/add' do
-  Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
+  start = params['daterange'][0..9]
+  finish = params['daterange'][13..22]
+  daterange = Listing.date_format(start: start, finish: finish)
+  p daterange
+  Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'], availability: daterange)
   redirect '/add-listing/added'
 end
 

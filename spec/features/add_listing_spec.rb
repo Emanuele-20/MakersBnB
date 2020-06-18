@@ -19,7 +19,7 @@ feature 'Adding a new listing to site' do
   fill_in "price", with: "150"
   fill_in "postcode", with: "C01 4ED"
   click_button'Submit'
-  expect(page).to have_content("You've just added a new space:")
+  expect(page).to have_content("You've just added a new space")
   expect(page).to have_content("Cosy Cottage")
   expect(page).to have_content("3 bed in the Cotswolds")
 

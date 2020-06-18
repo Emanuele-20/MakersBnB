@@ -7,7 +7,7 @@ describe Listing do
   describe '.add' do
   
     it 'should add a new listing' do
-      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL', availability: '[2020-06-16, 2020-06-18)')
 
       expect(listing).to be_a Listing
       expect(listing.title).to eq 'Test listing'
@@ -20,9 +20,9 @@ describe Listing do
   describe '.view_all' do
 
     it 'should return all listings' do
-      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
-      Listing.add(title: 'Test listing2', description: 'Another amazing place', price: 90, postcode: 'N5 4RL')
-      Listing.add(title: 'Test listing3', description: 'Lastamazing place', price: 200, postcode: 'E5 4RL')
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL', availability: '[2020-06-16, 2020-06-18)')
+      Listing.add(title: 'Test listing2', description: 'Another amazing place', price: 90, postcode: 'N5 4RL', availability: '[2020-06-16, 2020-06-18)')
+      Listing.add(title: 'Test listing3', description: 'Lastamazing place', price: 200, postcode: 'E5 4RL', availability: '[2020-06-16, 2020-06-18)')
 
       listings = Listing.view_all
 
@@ -36,16 +36,32 @@ describe Listing do
     it 'should only return available listings' do
       
       Timecop.freeze(Time.parse('16 June 2020'))
-      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
-      second_listing = Listing.add(title: 'Test2 listing', description: 'Great place', price: 120, postcode: 'N4 4RL')
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL', availability: '[2020-06-16, 2020-06-18)')
+      second_listing = Listing.add(title: 'Test2 listing', description: 'Great place', price: 120, postcode: 'N4 4RL', availability: '[2020-06-16, 2020-06-18)')
 
       booking = Booking.add(date: '16 June 2020', listingid: listing.id)
       available = Listing.check_available_listings(date: '16 June 2020')
 
       expect(available.first.id).to eq second_listing.id
-
     end
+  end
 
+  describe '.delete_listing' do
+    it 'should delete a listing' do
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL', availability: '[2020-06-16, 2020-06-18)')
+      Listing.delete_listing(listingid: listing.id)
+
+      expect(Listing.view_all).not_to include(listing)
+    end
+  end
+
+  describe ".edit_listing" do
+    it "should edit a listing" do
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
+      Listing.edit_listing(listingid: listing.id, title: 'Test listing Changed', description: 'Amazing place', price: 200, postcode: 'N1 4RL')
+      list = Listing.view_all
+      expect(list.last.title).to eq('Test listing Changed')
+    end
   end
 
 end
