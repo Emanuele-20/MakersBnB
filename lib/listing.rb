@@ -30,9 +30,20 @@ class Listing
       end
    end
 
-   def self.delete_listing(listingid:)
+  def self.edit_listing(listingid:, title:, description:, price:, postcode:)
     database_connection
 
+    result = @con.exec("UPDATE listing
+      SET title = '#{title}',
+          description = '#{description}',
+          price = '#{price}',
+          postcode = '#{postcode}'
+      WHERE
+          listingid = '#{listingid}';")
+   end
+
+   def self.delete_listing(listingid:)
+    database_connection
     @con.exec("DELETE FROM listing WHERE listingid = '#{listingid}'")
    end
 

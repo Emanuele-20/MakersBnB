@@ -57,7 +57,11 @@ post '/check-availability' do
 end
 
 get '/my-listings' do
+  @my_listing = Listing.view_all
   erb :my_listings
+end
+
+patch '/edit-listing/:id' do
 end
 
 

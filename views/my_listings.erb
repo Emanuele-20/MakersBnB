@@ -9,10 +9,36 @@
         </div>
       <br><br>
 
-        <form action="/add-listing" method="get">
-        <input type="submit" value="Add a new Listing">
-        </form>
+    <% @my_listing.each do |listing|  %>
+  <li>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h3><%= listing.title %></h3>
+          <%= listing.description %><br>
+          <%= listing.postcode.upcase %><br>
+          £<%= listing.price %>.00<br><br>
+
+          <form action="/edit-listing/<%listing.id%>" method="post">
+            <input type="hidden" name="_method" value="PATCH" />
+            <input type="submit" value="Edit Listing">
+          </form>
+
+          <form action="/delete-listing/<%listing.id%>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete this listing">
+          </form>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <form action="/add-listing" method="get">
+    <input type="submit" value="Add a new Listing">
+  </form>
    
-    </body>
+  </body>
 
 </html>
