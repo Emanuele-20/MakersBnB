@@ -59,6 +59,8 @@ get '/my-listings' do
 end
 
 get '/my-listings/:id/edit' do
+  p params['id']
+  @edit_listing = Listing.find_listing(listingid: params['id'])
   erb :edit_listing
 end
 

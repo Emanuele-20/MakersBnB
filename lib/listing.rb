@@ -71,6 +71,13 @@ class Listing
     "[" + format_one + ", " + format_two + ")"
    end
 
+   def self.find_listing(listingid:)
+    database_connection
+    entry = @con.exec("SELECT * FROM listing WHERE listingid = #{listingid.to_i};")
+        Listing.new(id: entry['listingid'], title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
+  end
+
+
    private
 
    def self.database_connection
@@ -80,5 +87,7 @@ class Listing
      @con = PG.connect(dbname: 'makersbnb')
     end
    end
+
+  
 
 end
