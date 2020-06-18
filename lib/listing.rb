@@ -12,11 +12,11 @@ class Listing
     @postcode = postcode
    end
 
-   def self.add(title:, description:, price:, postcode: )
+   def self.add(title:, description:, price:, postcode:, availability:)
     database_connection
 
-     result = @con.exec("INSERT INTO listing (title, description, price, postcode) 
-     VALUES ('#{title}', '#{description}', '#{price}', '#{postcode}') 
+     result = @con.exec("INSERT INTO listing (title, description, price, postcode, availability) 
+     VALUES ('#{title}', '#{description}', '#{price}', '#{postcode}', '#{availability}') 
      RETURNING listingid, title, description, price, postcode;")
      Listing.new(id: result[0]['listingid'], title: result[0]['title'], description: result[0]['description'], price: (result[0]['price']).to_i, postcode: result[0]['postcode'])
    end
@@ -30,6 +30,12 @@ class Listing
       end
    end
 
+   def self.delete_listing(listingid:)
+    database_connection
+
+    @con.exec("DELETE FROM listing WHERE listingid = '#{listingid}'")
+   end
+
    def self.check_available_listings(date:)
       database_connection
 
@@ -40,13 +46,19 @@ class Listing
         @available_properties = result.map do |row|
           Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
         end
-   end 
+   end
 
    def self.available_properties
     @available_properties
    end
 
-
+   def self.date_format(start:, finish:)
+    start_date = DateTime.strptime(start,'%m/%d/%Y')
+    end_date = DateTime.strptime(finish,'%m/%d/%Y')
+    format_one = start_date.strftime('%Y-%m-%d')
+    format_two = end_date.strftime('%Y-%m-%d')
+    "[" + format_one + ", " + format_two + ")"
+   end
 
    private
 
