@@ -43,9 +43,16 @@ describe Listing do
       available = Listing.check_available_listings(date: '16 June 2020')
 
       expect(available.first.id).to eq second_listing.id
-
     end
+  end
 
+  describe '.delete_listing' do
+    it 'should delete a listing' do
+      listing = Listing.add(title: 'Test listing', description: 'Amazing place', price: 100, postcode: 'N1 4RL')
+      Listing.delete_listing(listingid: listing.id)
+
+      expect(Listing.view_all).not_to include(listing)
+    end
   end
 
 end

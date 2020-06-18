@@ -12,7 +12,7 @@ class Listing
     @postcode = postcode
    end
 
-   def self.add(title:, description:, price:, postcode: )
+   def self.add(title:, description:, price:, postcode:)
     database_connection
 
      result = @con.exec("INSERT INTO listing (title, description, price, postcode) 
@@ -30,6 +30,12 @@ class Listing
       end
    end
 
+   def self.delete_listing(listingid:)
+    database_connection
+
+    @con.exec("DELETE FROM listing WHERE listingid = '#{listingid}'")
+   end
+
    def self.check_available_listings(date:)
       database_connection
 
@@ -40,13 +46,11 @@ class Listing
         @available_properties = result.map do |row|
           Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
         end
-   end 
+   end
 
    def self.available_properties
     @available_properties
    end
-
-
 
    private
 
