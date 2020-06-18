@@ -19,13 +19,13 @@
           <%= listing.postcode.upcase %><br>
           £<%= listing.price %>.00<br><br>
 
-          <form action="/my-listings/:<%=listing.id%>/edit" method="get">
+          <form action="/my-listings/<%=listing.id%>/edit" method="get">
             <input type="hidden" name="_method" value="PATCH" />
             <input type="submit" value="Edit Listing">
           </form>
 
-          <form action="/my-listings/:<%=listing.id%>" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
+          <form action="/my-listings/<%=listing.id%>" method="post">
+            <input type="hidden" name="_method" value="delete" />
             <input type="submit" value="Delete this listing">
           </form>
 

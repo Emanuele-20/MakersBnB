@@ -3,8 +3,8 @@ require './lib/listing.rb'
 require './lib/user.rb'
 
 class Makersbnb < Sinatra::Base
-
-  enable :sessions
+  
+  enable :sessions, :method_override
 
 get '/home' do
  erb :homepage
@@ -34,7 +34,6 @@ end
 
 get '/add-listing/added' do
   @listing = Listing.view_all
-  p @listing
   erb :added
 end
 
@@ -45,14 +44,12 @@ end
 
 get '/check-availability' do
   @available_list = Listing.available_properties
-  p @available_list
   erb :check_availability
 end
 
 post '/check-availability' do
   date = DateTime.parse(params['date']).strftime('%Y-%m-%d')
   @list = Listing.check_available_listings(date: date)
-  p @list
   redirect '/check-availability'
 end
 
@@ -67,6 +64,12 @@ end
 
 patch '/my-listings/:id' do
   Listing.edit_listing(listingid: params['listingid'], title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
+  redirect '/my-listings'
+end
+
+delete '/my-listings/:id' do
+  p params['id']
+  Listing.delete_listing(listingid: params['id'])
   redirect '/my-listings'
 end
 

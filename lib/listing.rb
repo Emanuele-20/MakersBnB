@@ -44,7 +44,7 @@ class Listing
 
    def self.delete_listing(listingid:)
     database_connection
-    @con.exec("DELETE FROM listing WHERE listingid = '#{listingid}'")
+    @con.exec("DELETE FROM listing WHERE listingid = '#{listingid.to_i}';")
    end
 
    def self.check_available_listings(date:)
