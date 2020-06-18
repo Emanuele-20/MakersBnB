@@ -1,0 +1,81 @@
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: left;
+  background: #ecae3b;
+  color: white;
+  font-size: 20px;
+}
+
+
+/* Page Content */
+.content {
+  margin: 20px;
+  padding:10px;
+}
+
+  input[type=submit] {
+    background-color: rgb(220, 100, 20);
+    color: white;
+    margin: 15px 0;
+    border: 2pt;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+}
+
+
+input[type=text], select, textarea {
+
+  box-sizing: border-box;
+  border: 1px solid  rgb(220, 100, 20);
+  margin: 8px 0;
+  border-radius: 7px;
+  text-align: center;
+  align-items: center;
+  resize: vertical;
+  width: 30%;
+}
+
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #e28d0c;
+  color: white
+}
