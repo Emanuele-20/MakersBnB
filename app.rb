@@ -61,9 +61,14 @@ get '/my-listings' do
   erb :my_listings
 end
 
-patch '/edit-listing/:id' do
+get '/my-listings/:id/edit' do
+  erb :edit_listing
 end
 
+patch '/my-listings/:id' do
+  Listing.edit_listing(listingid: params['listingid'], title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
+  redirect '/my-listings'
+end
 
 run! if app_file == $0
 
