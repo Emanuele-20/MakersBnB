@@ -1,16 +1,15 @@
 require 'pg'
 
 class Listing
+  attr_reader :id, :title, :description, :price, :postcode
 
-    attr_reader :id, :title, :description, :price, :postcode
-
-   def initialize(id:, title:, description:, price:, postcode:)
+  def initialize(id:, title:, description:, price:, postcode:)
     @id = id.to_i
     @title = title
     @description = description
     @price = price
     @postcode = postcode
-   end
+  end
 
    def self.add(title:, description:, price:, postcode:, availability:)
     database_connection
@@ -35,12 +34,12 @@ class Listing
 
     result = @con.exec("UPDATE listing
       SET title = '#{title}',
-          description = '#{description}',
-          price = '#{price}',
-          postcode = '#{postcode}'
+        description = '#{description}',
+        price = '#{price}',
+        postcode = '#{postcode}'
       WHERE
-          listingid = '#{listingid}';")
-   end
+        listingid = '#{listingid}';")
+  end
 
    def self.delete_listing(listingid:)
     database_connection
@@ -48,15 +47,15 @@ class Listing
    end
 
    def self.check_available_listings(date:)
-      database_connection
+     database_connection
 
-      result = @con.exec(
-      "SELECT * FROM listing 
-      WHERE NOT listingid IN
-      (SELECT listingid FROM booking WHERE date = '#{date}');")
-        @available_properties = result.map do |row|
-          Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
-        end
+    result = @con.exec(
+    "SELECT * FROM listing 
+    WHERE NOT listingid IN
+    (SELECT listingid FROM booking WHERE date = '#{date}');")
+    @available_properties = result.map do |row|
+      Listing.new(id: row['listingid'], title: row['title'], description: row['description'], price: (row['price']).to_i, postcode: row['postcode'])
+    end
    end
 
    def self.available_properties
@@ -74,9 +73,8 @@ class Listing
    def self.find_listing(listingid:)
     database_connection
     entry = @con.exec("SELECT * FROM listing WHERE listingid = #{listingid.to_i};")
-        Listing.new(id: entry['listingid'], title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
-  end
-
+      Listing.new(id: entry['listingid'], title: entry['title'], description: entry['description'], price: (entry['price']).to_i, postcode: entry['postcode'])
+   end
 
    private
 
@@ -87,7 +85,5 @@ class Listing
      @con = PG.connect(dbname: 'makersbnb')
     end
    end
-
-  
 
 end
