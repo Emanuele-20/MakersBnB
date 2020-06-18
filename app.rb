@@ -59,13 +59,12 @@ get '/my-listings' do
 end
 
 get '/my-listings/:id/edit' do
-  p params['id']
   @edit_listing = Listing.find_listing(listingid: params['id'])
   erb :edit_listing
 end
 
 patch '/my-listings/:id' do
-  Listing.edit_listing(listingid: params['listingid'], title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
+  Listing.edit_listing(listingid: params['id'], title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'])
   redirect '/my-listings'
 end
 

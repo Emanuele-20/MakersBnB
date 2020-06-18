@@ -20,7 +20,6 @@
           £<%= listing.price %>.00<br><br>
 
           <form action="/my-listings/<%=listing.id%>/edit" method="get">
-            <input type="hidden" name="_method" value="patch" />
             <input type="submit" value="Edit Listing">
           </form>
 

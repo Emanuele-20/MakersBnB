@@ -7,6 +7,7 @@
     <p>Please update all fields<p>
     
 <form action="/my-listings/<%= @edit_listing.id%>" method='post'>
+ <input type="hidden" name="_method" value="patch" />
   <label for='title'> Listing Name </label><br>
     <input type='text' id='title' name='title' placeholder="Listing Name"/> <br>
   <label for='description'> Add a short description </label> <br>
