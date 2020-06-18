@@ -30,19 +30,6 @@ class Listing
       end
    end
 
-   def self.edit_listing(listingid:, title:, description:, price:, postcode:)
-    database_connection
-
-    result = @con.exec("UPDATE listing
-      SET title = '#{title}',
-          description = '#{description}',
-          price = '#{price}',
-          postcode = '#{postcode}'
-      WHERE
-          listingid = '#{listingid}';")
-   end
-
-
    def self.delete_listing(listingid:)
     database_connection
 
@@ -70,8 +57,7 @@ class Listing
     end_date = DateTime.strptime(finish,'%m/%d/%Y')
     format_one = start_date.strftime('%Y-%m-%d')
     format_two = end_date.strftime('%Y-%m-%d')
-    [(format_one).to_s + ", " + (format_two).to_s]
-    # [DateTime.parse(start).strftime('%Y-%m-%d'), DateTime.parse(finish).strftime('%Y-%m-%d')]
+    "[" + format_one + ", " + format_two + ")"
    end
 
    private

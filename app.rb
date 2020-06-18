@@ -27,7 +27,8 @@ post '/add-listing/add' do
   start = params['daterange'][0..9]
   finish = params['daterange'][13..22]
   daterange = Listing.date_format(start: start, finish: finish)
-  Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'], availability: params[daterange])
+  p daterange
+  Listing.add(title: params['title'], description: params['description'], price: params['price'], postcode: params['postcode'], availability: daterange)
   redirect '/add-listing/added'
 end
 
