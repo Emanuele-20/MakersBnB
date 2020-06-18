@@ -14,4 +14,4 @@ feature "user can see their own listings page" do
       click_button('Add a new Listing')
       expect(current_path).to eq '/add-listing'
     end
-  end
+  end 
