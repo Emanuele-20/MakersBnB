@@ -12,11 +12,11 @@ class Listing
     @postcode = postcode
    end
 
-   def self.add(title:, description:, price:, postcode:)
+   def self.add(title:, description:, price:, postcode:, availability:)
     database_connection
 
-     result = @con.exec("INSERT INTO listing (title, description, price, postcode) 
-     VALUES ('#{title}', '#{description}', '#{price}', '#{postcode}') 
+     result = @con.exec("INSERT INTO listing (title, description, price, postcode, availability) 
+     VALUES ('#{title}', '#{description}', '#{price}', '#{postcode}', '#{availability}') 
      RETURNING listingid, title, description, price, postcode;")
      Listing.new(id: result[0]['listingid'], title: result[0]['title'], description: result[0]['description'], price: (result[0]['price']).to_i, postcode: result[0]['postcode'])
    end
@@ -50,6 +50,15 @@ class Listing
 
    def self.available_properties
     @available_properties
+   end
+
+   def self.date_format(start:, finish:)
+    start_date = DateTime.strptime(start,'%m/%d/%Y')
+    end_date = DateTime.strptime(finish,'%m/%d/%Y')
+    format_one = start_date.strftime('%Y-%m-%d')
+    format_two = end_date.strftime('%Y-%m-%d')
+    [(format_one).to_s + ", " + (format_two).to_s]
+    # [DateTime.parse(start).strftime('%Y-%m-%d'), DateTime.parse(finish).strftime('%Y-%m-%d')]
    end
 
    private
