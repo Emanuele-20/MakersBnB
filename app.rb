@@ -52,6 +52,11 @@ post '/check-availability' do
   redirect '/check-availability'
 end
 
+get '/my_listings' do
+  erb :my_listings
+end
+
+
 run! if app_file == $0
 
 end
