@@ -15,25 +15,25 @@
     </script>
   </head>
   <body>
-    <div class="header">
-      <h1>Makers BnB</h1>
-      <p>Add new listing<p>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <img src="/images/logo_blue.png" id="logo" alt="logo" height="60"; width:="150"/>
+      <br>
+    <h1> Add a new Listing </h1>
+
+      <form action="/add-listing/add" method='post'>
+          <input type='text' id='title' class="fadeIn first" name='title' placeholder="Listing Name"/> <br>
+        <label for='description'class="fadeIn second"> </label> <br>
+          <textarea id="description" name="description" class="fadeIn second" placeholder="Add a short description.." style="height:100px"></textarea><br>
+          <input type='text' id='price' name='price' class="fadeIn third" placeholder="Price per night"/> <br>
+          <input type='text' id='postcode' name='postcode' class="fadeIn fourth" placeholder="Postcode"/> <br>
+        <label for='daterange' class="fadeIn fourth"><h2>Dates Available</h2></label> <br>
+          <input type='text' id='daterange' name='daterange' class="fadeIn fourth"/> <br>
+          
+        <input type='submit' value='Submit'/>
+      </form>
     </div>
+  </div>
 
-  <form action="/add-listing/add" method='post'>
-  <label for='title'> Listing Name </label><br>
-    <input type='text' id='title' name='title' placeholder="Listing Name"/> <br>
-  <label for='description'> Add a short description </label> <br>
-    <textarea id="description" name="description" placeholder="Add a short description.." style="height:200px"></textarea><br>
-  <label for='price'> Price Per Night </label> <br>
-    <input type='text' id='price' name='price' placeholder="Price per night"/> <br>
-  <label for='postcode'> Postcode </label> <br>
-    <input type='text' id='postcode' name='postcode' placeholder="Postcode"/> <br>
-  <label for='daterange'> Availability </label> <br>
-    <input type='text' id='daterange' name='daterange'/> <br>
-    
-  <input type='submit' value='Submit'/>
-
-  </form>
 </body>
 </html>
