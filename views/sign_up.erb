@@ -3,25 +3,39 @@
       <p>Welcome! Create an account <p>
        </div>
 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+
+    <h2 class="inactive underlineHover"> Sign In </h2>
+    <h2 class="active"> Sign Up </h2>
+
+
+    <!-- Login Form -->
+    <form action='/home'>
+      <input type="text" id="username" class="fadeIn second" name="login" placeholder="username">
+      <input type="text" id="email" class="fadeIn second" name="login" placeholder="email">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="text" id="password2" class="fadeIn third" name="login" placeholder="confirm password">
+
+      <input type="submit" class="fadeIn fourth" value="Sign Up">
+    </form>
+
+    <!-- Remind Passowrd -->
+    
+
+  </div>
+</div>
+
+</html>
    
-<h2> Create account: </h2>
- <form action="/sign-up" method='post'>
-   <label for='username'> Enter a Username </label> <br>
-  <input type='text' id='username' name='username'/> <br>
 
-  <label for='email'> Enter you email  </label><br>
-  <input type='text' id='email' name='email'/> <br>
 
-  <label for='password'> Enter a password </label> <br>
-  <input type='text' id='password' name='password'/> <br>
-
-  <label for='password2'> Confirm password </label> <br>
-  <input type='text' id='password2' name='password2'/> <br>
-  <input type='submit' value='Sign Up'/>
-
-   <h2> Already have an account? </h2>
-      <form action="/login-in" method='get'>
-      <input type='submit' value='Sign in'/>
-      </div>
-
-  

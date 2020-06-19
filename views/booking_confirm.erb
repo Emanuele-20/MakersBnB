@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+<body>
+
+<h1> You're nearly ready to go</h1>
+
+<p> You've chosen to stay at </p>
+
+<h2> <%= @confirm_listing.title %></h2>
+<h3> <%= @confirm_listing.description %></h3>
+<h3> <%= @confirm_listing.postcode %></h3>
+ 
+  <form action="/booking/readytogo" method="get">
+
+  <input type="submit" class="fadeIn fourth" value="Book!">
+    </form>
+</body>

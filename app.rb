@@ -12,6 +12,10 @@ get '/' do
  erb :homepage
 end
 
+get '/home' do
+  erb :home
+end
+
 get '/sign-up' do
   erb :sign_up
 end
@@ -79,11 +83,17 @@ end
 post '/booking/:id' do
   date = session[:date]
   Booking.add(date: date, listingid: params['id'])
+  session[:id] = params['id']
   redirect '/booking/confirm'
 end
 
 get '/booking/confirm' do
+  @confirm_listing = Listing.find_listing(listingid: session[:id])
   erb :booking_confirm
+end
+
+get '/booking/readytogo' do
+  erb :readytogo
 end
 
 run! if app_file == $0
