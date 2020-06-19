@@ -12,6 +12,17 @@ body {
   height: 100vh;
 }
 
+body.homepage {
+    height: 100%;
+    background-image: url(“./public/images/london.jpg”);
+    /* Full height */
+   height: 100%;
+    /* Center and scale the image nicely */
+   background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
 a {
   color: #92badd;
   display:inline-block;
