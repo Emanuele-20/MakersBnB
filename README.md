@@ -40,6 +40,12 @@ Sophie was able to use her amazing design talents to mockup how the site may loo
 <img src=public/images/mock_up.png width=50%>
 </p><br><br>
 
+We decided to use a Trello board to stay in top of tasks, which worked really well:
+
+<p align="center">
+<img src=public/images/trello_board.png width=50%>
+</p><br><br>
+
 After our first day and half coding it wasn't clear what the entire application looked like and how the backend communicated with the front end. So in a bid to get the entire team working as one we took some time to do a full mock-up ensuring that all members had a grasp of functionality:
 
 <p align="center">
@@ -56,3 +62,21 @@ We initially maintained very good code quality with regular tests but then the e
 We worked fantastically well as a group and our main aim was to ensure that we communicated with each other at all times and if anyone was struggling or unsure of anything we took the time to come together and talk it through. 
 
 # Final Output
+
+Some screen shots of our final product:
+
+<p align="center">
+<img src=public/images/Screenshot1.png width=50%>
+</p><br><br>
+
+<p align="center">
+<img src=public/images/Screenshot2.png width=50%>
+</p><br><br>
+
+<p align="center">
+<img src=public/images/Screenshot3.png width=50%>
+</p><br><br>
+
+<p align="center">
+<img src=public/images/Screenshot4.png width=50%>
+</p><br><br>
