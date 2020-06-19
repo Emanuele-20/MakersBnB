@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require './lib/listing.rb'
 require './lib/user.rb'
+require './lib/booking.rb'
+
 
 class Makersbnb < Sinatra::Base
   
@@ -49,6 +51,7 @@ end
 
 post '/check-availability' do
   date = DateTime.parse(params['date']).strftime('%Y-%m-%d')
+  session[:date] = date
   @list = Listing.check_available_listings(date: date)
   redirect '/check-availability'
 end
@@ -69,9 +72,18 @@ patch '/my-listings/:id' do
 end
 
 delete '/my-listings/:id' do
-  p params['id']
   Listing.delete_listing(listingid: params['id'])
   redirect '/my-listings'
+end
+
+post '/booking/:id' do
+  date = session[:date]
+  Booking.add(date: date, listingid: params['id'])
+  redirect '/booking/confirm'
+end
+
+get '/booking/confirm' do
+  erb :booking_confirm
 end
 
 run! if app_file == $0
