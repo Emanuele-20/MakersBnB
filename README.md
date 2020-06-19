@@ -66,17 +66,17 @@ We worked fantastically well as a group and our main aim was to ensure that we c
 Some screen shots of our final product:
 
 <p align="center">
-<img src=public/images/Screenshot1.png width=50%>
+<img src=public/images/Screenshot_1.png width=50%>
 </p><br><br>
 
 <p align="center">
-<img src=public/images/Screenshot2.png width=50%>
+<img src=public/images/Screenshot_2.png width=50%>
 </p><br><br>
 
 <p align="center">
-<img src=public/images/Screenshot3.png width=50%>
+<img src=public/images/Screenshot_3.png width=50%>
 </p><br><br>
 
 <p align="center">
-<img src=public/images/Screenshot4.png width=50%>
+<img src=public/images/Screenshot_4.png width=50%>
 </p><br><br>
