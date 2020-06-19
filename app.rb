@@ -26,7 +26,7 @@ post'/sign-up' do
 end
 
 get '/add-listing' do
-  erb :add_listing_2
+  erb :add_listing
 end
 
 post '/add-listing/add' do
