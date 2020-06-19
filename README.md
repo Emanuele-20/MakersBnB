@@ -20,8 +20,39 @@ So we went with Ruby using Sinatra as our DSL. This also meant that we would be 
 
 Next came planning our week/days. We spent the first day planning how we would like the website to look and function which took many forms!
 
-# Our initial Class Diagram for Ruby:
+# Our initial diagrams:
+
+Our first thoughts in terms of Ruby classes:
 
 <p align="center">
-<img src=/images/class_diagram.png width=50%>
+<img src=public/images/class_diagram.png width=30%>
 </p><br><br>
+
+Alice, one of our coaches was also kind enough to have a call with our group to discuss potentially using some Javascript on our front-end and how that would work. This is what came of that session which was super useful!
+
+<p align="center">
+<img src=public/images/alice_diagram.png width=50%>
+</p><br><br>
+
+Sophie was able to use her amazing design talents to mockup how the site may look:
+
+<p align="center">
+<img src=public/images/mock_up.png width=50%>
+</p><br><br>
+
+After our first day and half coding it wasn't clear what the entire application looked like and how the backend communicated with the front end. So in a bid to get the entire team working as one we took some time to do a full mock-up ensuring that all members had a grasp of functionality:
+
+<p align="center">
+<img src=public/images/mvc_mockup.png width=50%>
+</p><br><br>
+
+
+# Learnings
+
+We realised that working as part of a team is not as easy as it sounds when you have to organise and guide yourselves. We had a mix of pairing sessions to make some good headway on the code and then some group mobbing sessions to bring everyone up to speed.
+
+We initially maintained very good code quality with regular tests but then the end of the week was taken up with group CSS sessions trying to get it to look pretty with a lot of trial and error!
+
+We worked fantastically well as a group and our main aim was to ensure that we communicated with each other at all times and if anyone was struggling or unsure of anything we took the time to come together and talk it through. 
+
+# Final Output
