@@ -6,11 +6,11 @@ class Makersbnb < Sinatra::Base
   
   enable :sessions, :method_override
 
-get '/home' do
+get '/' do
  erb :homepage
 end
 
-get '/' do
+get '/sign-up' do
   erb :sign_up
 end
 
