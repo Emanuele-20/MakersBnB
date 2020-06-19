@@ -13,8 +13,8 @@
         <%= listing.description %><br>
         <%= listing.postcode.upcase %><br>
         £<%= listing.price %>.00<br>
-        <form action="/booking/:<% listing.id %>" method="post">
-        <input type="button" name="book" value="Book This Property">
+        <form action="/booking/<%= listing.id %>" method="post">
+        <input type="submit" name="book" value="Book This Property">
         </form>
         </div>
       </div>
