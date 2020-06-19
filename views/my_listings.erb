@@ -2,18 +2,21 @@
     <head>
        <title>My listings</title>
     </head>
-
-    <body>
-        <div class="header">
-        <h1>My Listings</h1>
-        </div>
-      <br><br>
-
+<body>
+    <div class="wrapper fadeInDown" >
+    <div id="formContent"> 
+    <br>
+      <img src="/images/logo_blue.png" id="logo" alt="logo" height="60"; width:="150"/>
+    <br>
+    <h1> My Listings </h1>
+     <form action="/add-listing" method="get">
+      <input type="submit" value="Add a new Listing">
+     </form>
+    </div>
+  </div>
     <% @my_listing.each do |listing|  %>
-  <li>
-    <div class="row">
-      <div class="column">
-        <div class="card">
+   <div class="wrapper fadeInDown" >
+      <div id="formListings"> 
           <h3><%= listing.title %></h3>
           <%= listing.description %><br>
           <%= listing.postcode.upcase %><br>
@@ -31,12 +34,9 @@
           <% end %>
         </div>
       </div>
-    </div>
-  </li>
+    
 
-  <form action="/add-listing" method="get">
-    <input type="submit" value="Add a new Listing">
-  </form>
+ 
    
   </body>
 

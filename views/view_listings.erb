@@ -15,10 +15,14 @@
   </head>
 
   <body>
-  <div class="header">
-    <h1>Makers BnB</h1>
+  <div class="wrapper fadeInDown" >
+
+    <div id="formContent"> 
+    <br>
+      <img src="/images/logo_blue.png" id="logo" alt="logo" height="60"; width:="150"/>
+    <br>
     <p>Current Listings <p>
-  </div>
+    
  
   <form action="/check-availability" method="post">
     <p>When would you like to stay? </p>
@@ -27,22 +31,22 @@
     <input type="submit" value="Check Availability">
   </form>
 
+    </div>
+  </div>
   
   <% @all_listing.each do |listing|  %>
-  <li>
-    <div class="row">
-      <div class="column">
-        <div class="card">
+    <div class="wrapper fadeInDown" >
+      <div id="formListings"> 
           <h3><%= listing.title %></h3>
           <%= listing.description %><br>
           <%= listing.postcode.upcase %><br>
           £<%= listing.price %>.00<br><br>
-          <% end %>
         </div>
       </div>
-    </div>
-  </li>
+    <% end %>
+  
     
  
+
     </body>
 </html>
