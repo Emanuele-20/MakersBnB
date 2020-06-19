@@ -1,23 +1,20 @@
-   <body>
-    <div class="header">
-      <h1>Makers BnB</h1>
-      <p>Edit this listing<p>
+<body>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+      <br>
+        <img src="/images/logo_blue.png" id="logo" alt="logo" height="60"; width:="150"/>
+    <br>
+        <h1>Update this Listing</h1><br>
+        <h2>Please update all fields</h2>
+        
+        <form action="/my-listings/<%= @edit_listing.id%>" method='post'>
+          <input type="hidden" name="_method" value="patch" />
+          <input type='text' id='title' name='title' placeholder="Listing Name"/> <br>
+          <textarea id="description" name="description" placeholder="Add a short description.." style="height:200px"></textarea><br>
+          <input type='text' id='price' name='price' placeholder="Price per night"/> <br>
+          <input type='text' id='postcode' name='postcode' placeholder="Postcode"/> <br>
+          <input type='submit' value='Submit'/>
+        </form>
     </div>
-
-    <p>Please update all fields<p>
-    
-<form action="/my-listings/<%= @edit_listing.id%>" method='post'>
- <input type="hidden" name="_method" value="patch" />
-  <label for='title'> Listing Name </label><br>
-    <input type='text' id='title' name='title' placeholder="Listing Name"/> <br>
-  <label for='description'> Add a short description </label> <br>
-    <textarea id="description" name="description" placeholder="Add a short description.." style="height:200px"></textarea><br>
-  <label for='price'> Price Per Night </label> <br>
-    <input type='text' id='price' name='price' placeholder="Price per night"/> <br>
-  <label for='postcode'> Postcode </label> <br>
-    <input type='text' id='postcode' name='postcode' placeholder="Postcode"/> <br>
- 
-  <input type='submit' value='Submit'/>
-
-  </form>
-  </body>
+  </div>
+</body>

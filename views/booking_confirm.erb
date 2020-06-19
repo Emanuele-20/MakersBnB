@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    
-  </head>
+
 <body>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <br>
+      <img src="/images/logo_blue.png" id="logo" alt="logo" height="60"; width:="150"/>
+      <br>
+      <h1> You're nearly ready to go </h1>
+  </div>
+</div>
 
-<h1> You're nearly ready to go</h1>
-
-<p> You've chosen to stay at </p>
-
-<h2> <%= @confirm_listing.title %></h2>
-<h3> <%= @confirm_listing.description %></h3>
-<h3> <%= @confirm_listing.postcode %></h3>
- 
-  <form action="/booking/readytogo" method="get">
-
-  <input type="submit" class="fadeIn fourth" value="Book!">
-    </form>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h1> You've chosen to stay at </h1>
+      <p> <%= @confirm_listing.title %></p>
+      <p> <%= @confirm_listing.description %></p>
+      <h2> <%= @confirm_listing.postcode %></h2>
+      <form action="/booking/readytogo" method="get">
+        <input type="submit" class="fadeIn fourth" value="Book!">
+      </form>
+  </div>
+</div>
 </body>
