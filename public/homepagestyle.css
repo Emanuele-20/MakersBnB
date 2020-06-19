@@ -12,9 +12,9 @@ body {
   height: 100vh;
 }
 
-body.homepage {
+body.home {
     height: 100%;
-    background-image: url(“./public/images/london.jpg”);
+    background-image: url(“public/images/london.jpg”);
     /* Full height */
    height: 100%;
     /* Center and scale the image nicely */
